@@ -75,7 +75,7 @@ function Knob(props) {
 
         let centerX = canvas.width / 2;
         let centerY = canvas.height / 2;
-        let radius = (canvas.width / 2)*.75;
+        let radius = (canvas.width / 2)*.65;
         let startAngle = defToRad(lowAngle);
         let endAngle = defToRad(rotation);
         
@@ -85,7 +85,7 @@ function Knob(props) {
         context.strokeStyle = "rgb(108, 153, 255)";
         context.stroke();
 
-        // remainding path
+        // innactive path
 
         startAngle = defToRad(rotation);
         endAngle = defToRad(highAngle);
