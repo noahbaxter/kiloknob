@@ -11,4 +11,8 @@ function roundNumber(number, decimalPlaces = 0) {
     return Math.round(number * multiplier) / multiplier;
 }
 
-export { clipNumber, roundNumber };
+function degToRad(degree) {
+    return ((degree - 90) / 360) * 2 * Math.PI;
+}
+
+export { clipNumber, degToRad, roundNumber };

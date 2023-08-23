@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import knobBase from './Knob Base.svg'
 import './knob.css'
 
-import { clipNumber, roundNumber } from './utils';
+import { clipNumber, degToRad, roundNumber } from './utils';
 
 function Knob({ paramName, paramValueChange}) {
 
@@ -48,10 +48,6 @@ function Knob({ paramName, paramValueChange}) {
         window.removeEventListener('mouseup', handleMouseUp);
     }
 
-    function defToRad(degree){
-        return ((degree - 90) / 360) * 2 * Math.PI;
-    }
-
     const canvasRef = useRef(null);
     useEffect(() => {
         // force proper resolution
@@ -66,8 +62,8 @@ function Knob({ paramName, paramValueChange}) {
         let centerX = canvas.width / 2;
         let centerY = canvas.height / 2;
         let radius = (canvas.width / 2)*.65;
-        let startAngle = defToRad(lowAngle);
-        let endAngle = defToRad(rotation);
+        let startAngle = degToRad(lowAngle);
+        let endAngle = degToRad(rotation);
         
         context.beginPath();
         context.lineWidth = 15;
@@ -76,8 +72,8 @@ function Knob({ paramName, paramValueChange}) {
         context.stroke();
 
         // remaining path
-        startAngle = defToRad(rotation);
-        endAngle = defToRad(highAngle);
+        startAngle = degToRad(rotation);
+        endAngle = degToRad(highAngle);
         
         context.beginPath();
         context.arc(centerX, centerY, radius, startAngle, endAngle);
